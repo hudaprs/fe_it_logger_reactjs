@@ -1,0 +1,30 @@
+{
+  "logs": [
+    {
+      "id": 1,
+      "message": "Fix hard drive in Back-End PC",
+      "attention": false,
+      "date": "02-21-2020",
+      "tech": "Huda Prasetyo"
+    },
+    {
+      "id": 2,
+      "message": "Change keyboard in Front-End PC",
+      "attention": false,
+      "date": "02-21-2020",
+      "tech": "Raihan"
+    }
+  ],
+  "techs": [
+    {
+      "id": 1,
+      "firstName": "Huda Prasetyo",
+      "lastName": "Prasetyo"
+    },
+    {
+      "id": 2,
+      "firstName": "Raihan",
+      "lastName": null
+    }
+  ]
+}
