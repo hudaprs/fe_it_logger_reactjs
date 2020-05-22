@@ -4,15 +4,22 @@
       "id": 1,
       "message": "Fix hard drive in Back-End PC",
       "attention": false,
-      "date": "02-21-2020",
+      "date": "02-21-2020 17:05:25",
       "tech": "Huda Prasetyo"
     },
     {
       "id": 2,
       "message": "Change keyboard in Front-End PC",
       "attention": false,
-      "date": "02-21-2020",
+      "date": "02-21-2020 17:10:00",
       "tech": "Raihan"
+    },
+    {
+      "id": 3,
+      "message": "Production build failed in IT Logger project",
+      "attention": true,
+      "date": "02-21-2020 19:00:00",
+      "tech": "Huda Prasetyo"
     }
   ],
   "techs": [
