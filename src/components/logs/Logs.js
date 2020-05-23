@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import LogItem from "./LogItem";
 import PreLoader from "../layout/PreLoader";
 import { getLogs } from "../../actions/logActions";
@@ -13,7 +14,7 @@ const Logs = (props) => {
     // eslint-disable-next-line
   }, []);
 
-  if (loading) return <PreLoader />;
+  if (loading || logs === null) return <PreLoader />;
 
   return (
     <Fragment>
@@ -35,5 +36,10 @@ const Logs = (props) => {
 const mapStateToProps = (state) => ({
   log: state.log,
 });
+
+Logs.propTypes = {
+  log: PropTypes.object.isRequired,
+  getLogs: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps, { getLogs })(Logs);

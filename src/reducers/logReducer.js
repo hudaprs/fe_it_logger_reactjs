@@ -10,6 +10,7 @@ const initialState = {
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case SET_LOADING:
+      console.log("A");
       return {
         ...state,
         loading: true,
@@ -25,6 +26,7 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         error: payload,
+        loading: false,
       };
     default:
       return state;

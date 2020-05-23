@@ -1,15 +1,14 @@
 import { SET_LOADING, GET_LOGS, LOGS_ERROR } from "../actions/types";
 
-export const setLoading = () => {
-  return {
+export const setLoading = () => (dispatch) => {
+  dispatch({
     type: SET_LOADING,
-  };
+  });
 };
 
 export const getLogs = () => async (dispatch) => {
+  dispatch(setLoading());
   try {
-    setLoading();
-
     const logs = await fetch("/logs");
     const data = await logs.json();
 
