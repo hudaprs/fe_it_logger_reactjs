@@ -8,6 +8,8 @@ export const setLoading = () => {
 
 export const getLogs = () => async (dispatch) => {
   try {
+    setLoading();
+
     const logs = await fetch("/logs");
     const data = await logs.json();
 
