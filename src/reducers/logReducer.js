@@ -1,16 +1,16 @@
-import { SET_LOADING, GET_LOGS, LOGS_ERROR } from "../actions/types";
+import { SET_LOADING, GET_LOGS, LOGS_ERROR, ADD_LOG } from "../actions/types";
 
 const initialState = {
   logs: [],
   current: null,
-  loading: false,
   error: null,
+  loading: false,
+  isSuccess: false,
 };
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case SET_LOADING:
-      console.log("A");
       return {
         ...state,
         loading: true,
@@ -21,12 +21,20 @@ export default (state = initialState, { type, payload }) => {
         logs: payload,
         loading: false,
       };
+    case ADD_LOG:
+      return {
+        ...state,
+        logs: [...state.logs, payload],
+        loading: false,
+        isSuccess: true,
+      };
     case LOGS_ERROR:
       console.log(payload);
       return {
         ...state,
         error: payload,
         loading: false,
+        isSuccess: false,
       };
     default:
       return state;

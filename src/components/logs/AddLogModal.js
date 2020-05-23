@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { addLog } from "../../actions/logActions";
 import M from "materialize-css/dist/js/materialize.min.js";
 
-const AddLogModal = () => {
+const AddLogModal = (props) => {
+  const { addLog, loading, isSuccess } = props;
   const [message, setMessage] = useState("");
   const [attention, setAttention] = useState(false);
   const [tech, setTech] = useState("");
@@ -10,9 +14,20 @@ const AddLogModal = () => {
     if (message === "" || tech === "") {
       M.toast({ html: "Please enter a message and tech" });
     } else {
-      M.toast({ html: `Log added by ${tech}` });
+      addLog({
+        message,
+        attention,
+        tech,
+      });
     }
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      M.toast({ html: `Log added by ${tech}` });
+    }
+    // eslint-disable-next-line
+  }, [isSuccess]);
 
   return (
     <div id="add-log-modal" className="modal" style={modalStyle}>
@@ -70,6 +85,7 @@ const AddLogModal = () => {
           href="#!"
           onClick={onSubmit}
           className="modal-close waves-effect blue waves-light btn"
+          disabled={loading}
         >
           Enter
         </a>
@@ -78,9 +94,20 @@ const AddLogModal = () => {
   );
 };
 
+AddLogModal.propTypes = {
+  addLog: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  isSuccess: PropTypes.bool.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  loading: state.log.loading,
+  isSuccess: state.log.isSuccess,
+});
+
 const modalStyle = {
   width: "75%",
   height: "75%",
 };
 
-export default AddLogModal;
+export default connect(mapStateToProps, { addLog })(AddLogModal);
