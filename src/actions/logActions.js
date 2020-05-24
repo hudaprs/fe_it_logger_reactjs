@@ -7,6 +7,7 @@ import {
   SET_CURRENT,
   CLEAR_CURRENT,
   UPDATE_LOG,
+  SEARCH_LOGS,
 } from "../actions/types";
 
 export const setLoading = () => {
@@ -22,6 +23,18 @@ export const getLogs = () => async (dispatch) => {
     const data = await logs.json();
 
     dispatch({ type: GET_LOGS, payload: data });
+  } catch (err) {
+    dispatch({ type: LOGS_ERROR, payload: err.response.data });
+  }
+};
+
+export const searchLogs = (text) => async (dispatch) => {
+  dispatch(setLoading());
+  try {
+    const logs = await fetch(`/logs?q=${text}`);
+    const data = await logs.json();
+
+    dispatch({ type: SEARCH_LOGS, payload: data });
   } catch (err) {
     dispatch({ type: LOGS_ERROR, payload: err.response.data });
   }
