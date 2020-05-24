@@ -5,7 +5,7 @@ import { addLog } from "../../actions/logActions";
 import M from "materialize-css/dist/js/materialize.min.js";
 
 const AddLogModal = (props) => {
-  const { addLog, loading, isSuccess } = props;
+  const { addLog, loading, isSuccess, error } = props;
   const [message, setMessage] = useState("");
   const [attention, setAttention] = useState(false);
   const [tech, setTech] = useState("");
@@ -21,13 +21,6 @@ const AddLogModal = (props) => {
       });
     }
   };
-
-  useEffect(() => {
-    if (isSuccess) {
-      M.toast({ html: `Log added by ${tech}` });
-    }
-    // eslint-disable-next-line
-  }, [isSuccess]);
 
   return (
     <div id="add-log-modal" className="modal" style={modalStyle}>
@@ -98,11 +91,13 @@ AddLogModal.propTypes = {
   addLog: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   isSuccess: PropTypes.bool.isRequired,
+  error: PropTypes.any,
 };
 
 const mapStateToProps = (state) => ({
   loading: state.log.loading,
   isSuccess: state.log.isSuccess,
+  error: state.log.error,
 });
 
 const modalStyle = {
