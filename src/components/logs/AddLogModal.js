@@ -19,6 +19,8 @@ const AddLogModal = (props) => {
         attention,
         tech,
       });
+
+      M.toast({ html: `Log added by ${tech}` });
     }
   };
 
