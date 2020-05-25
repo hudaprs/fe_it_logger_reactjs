@@ -23,11 +23,9 @@ const Logs = (props) => {
           <h4 className="center">System Logs</h4>
         </li>
 
-        {!loading && logs.length === 0 ? (
-          <p className="center">No Logs Found</p>
-        ) : (
-          logs.map((log) => <LogItem key={log.id} log={log} />)
-        )}
+        {!loading &&
+          logs.length !== 0 &&
+          logs.map((log) => <LogItem key={log.id} log={log} />)}
       </ul>
     </Fragment>
   );

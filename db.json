@@ -1,40 +1,51 @@
 {
   "logs": [
     {
-      "message": "Lenovo Legion Broke in workspace 02",
+      "message": "23113",
       "attention": false,
-      "tech": "Huda Prasetyo",
+      "tech": "213 123",
+      "date": "2020-05-25T03:29:05.317Z",
       "id": 1
     },
     {
-      "id": 2,
-      "message": "updated",
-      "tech": "Huda Prasetyo",
-      "attention": true
+      "message": "12313",
+      "attention": false,
+      "tech": "213 123",
+      "date": "2020-05-25T03:33:26.209Z",
+      "id": 2
     },
     {
-      "message": "1111",
+      "message": "Test",
       "attention": false,
       "tech": "Huda Prasetyo",
+      "date": "2020-05-25T03:34:17.108Z",
       "id": 3
     },
     {
-      "message": "11",
+      "message": "Edan",
       "attention": false,
-      "tech": "Huda Prasetyo",
+      "tech": "213 123",
+      "date": "2020-05-25T03:35:39.958Z",
       "id": 4
+    },
+    {
+      "message": "test",
+      "attention": false,
+      "tech": "132 123",
+      "date": "2020-05-25T03:42:59.327Z",
+      "id": 5
     }
   ],
   "techs": [
     {
-      "id": 1,
-      "firstName": "Huda",
-      "lastName": "Prasetyo"
+      "firstName": "132",
+      "lastName": "123",
+      "id": 1
     },
     {
-      "id": 2,
-      "firstName": "Raihan",
-      "lastName": null
+      "firstName": "tes",
+      "lastName": "test",
+      "id": 2
     }
   ]
 }

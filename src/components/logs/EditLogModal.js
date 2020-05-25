@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { updateLog } from "../../actions/logActions";
+import { getTechs } from "../../actions/techActions";
 import PropTypes from "prop-types";
 import TechSelectOptions from "../techs/TechSelectOptions";
 import M from "materialize-css/dist/js/materialize.min.js";
 
-const EditLogModal = ({ current, updateLog }) => {
+const EditLogModal = ({ current, updateLog, getTechs }) => {
   const [message, setMessage] = useState("");
   const [attention, setAttention] = useState(false);
   const [tech, setTech] = useState("");
@@ -22,6 +23,10 @@ const EditLogModal = ({ current, updateLog }) => {
       });
 
       M.toast({ html: `Log updated by ${tech}` });
+      getTechs();
+      setMessage("");
+      setTech("");
+      setAttention(false);
     }
   };
 
@@ -109,4 +114,4 @@ const modalStyle = {
   height: "75%",
 };
 
-export default connect(mapStateToProps, { updateLog })(EditLogModal);
+export default connect(mapStateToProps, { updateLog, getTechs })(EditLogModal);

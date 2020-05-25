@@ -3,10 +3,11 @@ import TechSelectOptions from "../techs/TechSelectOptions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { addLog } from "../../actions/logActions";
+import { getTechs } from "../../actions/techActions";
 import M from "materialize-css/dist/js/materialize.min.js";
 
 const AddLogModal = (props) => {
-  const { addLog, loading } = props;
+  const { addLog, getTechs, loading } = props;
   const [message, setMessage] = useState("");
   const [attention, setAttention] = useState(false);
   const [tech, setTech] = useState("");
@@ -19,9 +20,15 @@ const AddLogModal = (props) => {
         message,
         attention,
         tech,
+        date: new Date(),
       });
 
       M.toast({ html: `Log added by ${tech}` });
+
+      getTechs();
+      setMessage("");
+      setTech("");
+      setAttention(false);
     }
   };
 
@@ -108,4 +115,4 @@ const modalStyle = {
   height: "75%",
 };
 
-export default connect(mapStateToProps, { addLog })(AddLogModal);
+export default connect(mapStateToProps, { addLog, getTechs })(AddLogModal);

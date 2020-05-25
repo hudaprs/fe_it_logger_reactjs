@@ -11,10 +11,12 @@ const TechSelectOptions = ({ tech: { techs, loading }, getTechs }) => {
 
   return (
     !loading &&
+    techs !== null &&
     techs.map((t) => (
-      <option key={t.id} value={`${t.firstName} ${t.lastName}`}>{`${
-        t.firstName
-      } ${t.lastName ? t.lastName : ""}`}</option>
+      <option
+        key={t.id}
+        value={`${t.firstName} ${t.lastName ? t.lastName : ""}`}
+      >{`${t.firstName} ${t.lastName ? t.lastName : ""}`}</option>
     ))
   );
 };

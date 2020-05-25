@@ -11,7 +11,7 @@ import {
 } from "../actions/types";
 
 const initialState = {
-  logs: [],
+  logs: null,
   current: null,
   error: null,
   loading: false,
@@ -42,7 +42,6 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         logs: [...state.logs, payload],
         loading: false,
-        isSuccess: true,
       };
     case UPDATE_LOG:
       return {
@@ -55,7 +54,6 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         logs: state.logs.filter((log) => log.id !== payload),
         loading: false,
-        isSuccess: true,
       };
     case SET_CURRENT:
       return {
@@ -75,7 +73,6 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         error: payload,
         loading: false,
-        isSuccess: false,
       };
     default:
       return state;
