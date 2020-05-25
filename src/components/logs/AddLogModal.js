@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import TechSelectOptions from "../techs/TechSelectOptions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { addLog } from "../../actions/logActions";
 import M from "materialize-css/dist/js/materialize.min.js";
 
 const AddLogModal = (props) => {
-  const { addLog, loading, isSuccess, error } = props;
+  const { addLog, loading } = props;
   const [message, setMessage] = useState("");
   const [attention, setAttention] = useState(false);
   const [tech, setTech] = useState("");
@@ -53,7 +54,7 @@ const AddLogModal = (props) => {
               <option value="" defaultValue={true} disabled>
                 Select Technician
               </option>
-              <option value="Huda Prasetyo">Huda Prasetyo</option>
+              <TechSelectOptions />
             </select>
           </div>
         </div>
